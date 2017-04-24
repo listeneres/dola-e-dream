@@ -20,6 +20,13 @@ module.exports = {
         }
       },
       {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },{
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader'
+            },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
