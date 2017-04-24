@@ -4,6 +4,17 @@ export default  {
         commit
     }) => {
         commit(types.ADDGOODS);
-    }  
+    },
+    delGoods: ({
+        commit
+    }) => {
+        commit(types.DELGOODS);
+    },
+    render: ({
+        commit
+    }) => {
+        commit(types.RANDER);
+    },
+    
 };
 

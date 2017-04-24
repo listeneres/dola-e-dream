@@ -11,7 +11,7 @@ var router = new VueRouter({
 		component: App,
 		children: [
 			{
-				path:'/goods',
+				path:'/',
 				component:goods
 			}
 		]

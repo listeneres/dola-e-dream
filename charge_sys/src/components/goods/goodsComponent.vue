@@ -1,24 +1,14 @@
 <template>
 	<div id="listen">
 		<input type="button" value="addGoods" @click="addGoods"/>
+		<input type="button" value="delGoods" @click="delGoods"/>
         <tr>
         	<td><input type="checkbox" /></td>
-        	<td>图片</td>
-        	<td>名称</td>
-        	<td>类别</td>
-        	<td>规格</td>
-        	<td>单位</td>
-        	<td>库存</td>
-        	<td>成本</td>
-        	<td>批发价</td>
-        	<td>库存额</td>
-        	<td>创建人</td>
-        	<td>创建事件</td>
-        	<td>修改时间</td>
-        	<td>标签</td>
+        	<td  v-for="(value,key) in datas[0]">{{key}}</td>
         </tr>
         <tr>
-            <td></td>
+        	<td><input type="checkbox" /></td>
+            <td v-for="(value,key) in datas[0]">{{value}}</td>
         </tr>
 	</div>
 </template>
@@ -34,10 +24,13 @@
     },
 //  computed: mapGetters(["findDetailData"]),
     methods:{	
-    	...mapActions(["addGoods"]),
+    	...mapActions(["delGoods","addGoods"]),
     	//增
     	    addGoods(){
-    	    	this.$store.dispatch("addGoods",message)
+    	    	this.$store.dispatch("addGoods")
+    	    },
+    	    delGoods(){
+    	    	this.$store.dispatch("delGoods")
     	    }
     	//删
 //  	    delGoods(){}
@@ -45,7 +38,15 @@
 //  	    checkGoods(){}
     	//改
 //  	    changeGoods(){}
-    }
+    },
+    computed: mapGetters(['datas']),
+    created(){
+       	        try {
+					this.$store.dispatch("render")
+				}catch(error) {
+                     alert(error)
+                 }
+       },
  }
 </script>
 

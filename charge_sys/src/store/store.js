@@ -5,14 +5,16 @@ import actions from '../actions/action.js'
 import mutations from '../mutations/lis-mutations.js'
 import getters from '../getters/lis-getters.js'
 Vue.use(Vuex)
+console.log(mutations)
 const state = {
 	random:'',
 	phoneNum:'',
-	psw:''
+	psw:'',
+	datas:''
 };
 export default new Vuex.Store({
 	state,
-	mutations,
+    mutations,
 	actions,
 	getters
 })

@@ -5,7 +5,8 @@ export default {
     phoneNum:function(state){
     	return state.phoneNum
     },
-    psw:function(state){
-    	return state.psw
+    datas:function(state){
+//  	var datas = JSON.parse(datas)
+    	return state.datas
     }
 }
