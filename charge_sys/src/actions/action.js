@@ -4,6 +4,11 @@ export default  {
         commit
     }) => {
         commit(types.ADDGOODS);
-    }  
+    },
+    checkLogin: ({
+        commit
+    }) => {
+        commit(types.CHECKLOGIN);
+    }
 };
 
