@@ -93,7 +93,7 @@
 					</li>
 
 					<li class="">
-						<router-link to="/">
+						<router-link to="/userlist">
 							<b class="c4"></b>
 							<span class="icon_bar made"><i class="icons-siderbar "></i></span>
 							<a href="" target="rightBottomFrame">
