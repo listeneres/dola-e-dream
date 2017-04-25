@@ -10,7 +10,8 @@ const state = {
 	random:'',
 	phoneNum:'',
 	psw:'',
-	datas:''
+	datas:'',
+	loginData:'',
 };
 export default new Vuex.Store({
 	state,

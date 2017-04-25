@@ -5,6 +5,7 @@ export default  {
     }) => {
         commit(types.ADDGOODS);
     },
+
     delGoods: ({
         commit
     }) => {
@@ -16,5 +17,12 @@ export default  {
         commit(types.RANDER);
     },
     
+
+    checkLogin: ({
+        commit
+    }) => {
+        commit(types.CHECKLOGIN);
+    }
+
 };
 
