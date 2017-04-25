@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2017-04-24 10:52:49
+Date: 2017-04-25 20:00:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -87,6 +87,28 @@ CREATE TABLE `goods_type` (
 INSERT INTO `goods_type` VALUES ('88001', '类型名称', '类型英文', null, null, null, null, null);
 
 -- ----------------------------
+-- Table structure for manager
+-- ----------------------------
+DROP TABLE IF EXISTS `manager`;
+CREATE TABLE `manager` (
+  `manager_id` int(11) NOT NULL AUTO_INCREMENT,
+  `manager_name` varchar(255) DEFAULT NULL,
+  `manager_type` varchar(255) DEFAULT NULL,
+  `manager_message` varchar(255) DEFAULT NULL,
+  `manager_age` varchar(255) DEFAULT NULL,
+  `manager_phone` varchar(255) DEFAULT NULL,
+  `brand_id` varchar(255) DEFAULT NULL,
+  `manager_mark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`manager_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=88802 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of manager
+-- ----------------------------
+INSERT INTO `manager` VALUES ('88800', 'hzm', '超级管理员', '管理者的介绍', '18', '13760765665', '99001', 'admin');
+INSERT INTO `manager` VALUES ('88801', 'XDH', '超级管理员', '管理者的介绍', '18', '13760765665', '99001', 'admin');
+
+-- ----------------------------
 -- Table structure for ralation
 -- ----------------------------
 DROP TABLE IF EXISTS `ralation`;
@@ -109,17 +131,17 @@ INSERT INTO `ralation` VALUES ('70001', '10001', '2', '广州天河', '2017-04-2
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) DEFAULT NULL,
   `user_nickname` varchar(255) DEFAULT NULL,
   `user_img` varchar(255) DEFAULT NULL,
-  `user_phone` int(255) DEFAULT NULL,
+  `user_phone` varchar(255) DEFAULT NULL,
   `user_email` varchar(255) DEFAULT NULL,
   `user_qq` varchar(255) DEFAULT NULL,
   `user_star` varchar(255) DEFAULT NULL,
   `user_status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70002 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user

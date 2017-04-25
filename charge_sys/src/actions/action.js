@@ -7,8 +7,8 @@ export default  {
     },
     checkLogin: ({
         commit
-    }) => {
-        commit(types.CHECKLOGIN);
+    },value) => {
+        commit(types.CHECKLOGIN,value);
     }
 };
 

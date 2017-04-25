@@ -26,7 +26,7 @@
 							<div class="item validatepic clearfix">
 								<img id="Code" src="../images/12.png" width="75" height="30" style="display: inline; float: left;" />
 								<input id="pwdInput" name="dtoUserCode" tabindex="3" class="ipt ipt-y f_l" type="text" style="margin-right: 5px; display: inline;" v-model.trim="code" />
-								<a tabindex="4" class="changepic" id="forGetPassword" href="#">换一张?</a>
+								<a tabindex="4" class="changepic" id="forGetPassword" href="#" >换一张?</a>
 							</div>
 							<div class="item itemRadio clearfix">
 								<input type="checkbox" style="float: left;width:13px;height: 25px" id="radioPass" onclick="checkbox();">&nbsp;记住密码
@@ -44,7 +44,7 @@
 		<div class="app" v-if="hasLogin">
 			<div id="content-top">
 				<div>
-					<span class="guan">后台管理系统</span>
+					<span class="guan">后台管理系统{{checkLogin}}</span>
 					<button type="button" class="btn btn-link text" style="color: #323f4c" aria-label="Left Align" id="btnNavigation">
 
 				<span class="" aria-hidden="true"></span>
@@ -180,6 +180,8 @@
 	</div>
 </template>
 <script type="text/javascript">
+	import $ from 'jquery'
+  	import {mapGetters, mapActions} from "vuex";
 	import login from "./js/login.js"
 	export default {
 		data: function() {
@@ -191,21 +193,17 @@
 				code: ''
 			}
 		},
+		computed: mapGetters(["checkLogin"]),
 		methods: {
 			loginBtn: function() {
 				console.log(this.userName, this.psw, this.code)
 				this.isLogin = false;
-				this.hasLogin = true
-				var obj = {
-					userName: this.userName,
-					psw: this.psw,
-					code: this.code
-				}
-				login(obj)
-				this.isLogin = false;
-				this.hasLogin = true
-			}
-		}
+				this.hasLogin = true;
+				this.$store.dispatch("checkLogin",{userName: this.userName,psw: this.psw,code: this.code})
+			},
+			...mapActions(["checkLogin"]),		
+		},
+		
 	}
 </script>
 <style lang="css">
