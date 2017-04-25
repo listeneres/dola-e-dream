@@ -8,5 +8,9 @@ export default {
     datas:function(state){
 //  	var datas = JSON.parse(datas)
     	return state.datas
-    }
+    },
+    Mdata:function(state){
+//      var datas = JSON.parse(datas)
+        return state.Mdata
+    },
 }

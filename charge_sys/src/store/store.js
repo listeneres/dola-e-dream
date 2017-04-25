@@ -11,6 +11,7 @@ const state = {
 	phoneNum:'',
 	psw:'',
 	datas:'',
+    Mdata:'',
 	loginData:'',
 };
 export default new Vuex.Store({

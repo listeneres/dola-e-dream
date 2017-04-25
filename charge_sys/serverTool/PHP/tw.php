@@ -1,6 +1,7 @@
 <?php
     //解决跨域问题
-  header("Access-Control-Allow-Origin: http://localhost:8080");
+   
+    header("Access-Control-Allow-Origin: http://localhost:8080");
     include "./Global.php";
     $sql = new sql();
     class Goods{
@@ -13,11 +14,12 @@
         public $goodsOldPrice;
         public $goodsDis;
         public $goodsMes;
-    }
+    } 
+    
     $con = new mysqli($sql->host,$sql->user,$sql->password,$sql->table);
     // mysqli_query($con,"set names utf8");
     $con->query("set names utf8"); //设置编码为utf8 显示中文
-    $sql = 'select * from goods';
+    $sql = 'select * from goods ';
     $res = $con->query($sql);
     // echo $res;
     $arr = array();
