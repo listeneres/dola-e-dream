@@ -7,15 +7,18 @@ import mutations from '../mutations/login-mutations.js'
 //import getters from '../getters/lis-getters.js'
 import getters from '../getters/login-getters.js'
 Vue.use(Vuex)
+console.log(mutations)
 const state = {
 	random:'',
 	phoneNum:'',
 	psw:'',
+	datas:'',
+    Mdata:'',
 	loginData:'',
 };
 export default new Vuex.Store({
 	state,
-	mutations,
+    mutations,
 	actions,
 	getters
 })

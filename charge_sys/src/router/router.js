@@ -4,6 +4,7 @@ import App from '../App.vue'
 //yw
 //import login from '../components/login/loginComponent.vue';
 import goods from '../components/goods/goodsComponent.vue';
+import userlist from '../components/userlist/userlist.vue';
 Vue.use(VueRouter)
 var router = new VueRouter({
 	routes: [{
@@ -11,8 +12,12 @@ var router = new VueRouter({
 		component: App,
 		children: [
 			{
-				path:'/goods',
+				path:'/',
 				component:goods
+			},
+			{
+				path:'/userlist',
+				component:userlist
 			}
 		]
 

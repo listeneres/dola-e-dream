@@ -5,10 +5,35 @@ export default  {
     }) => {
         commit(types.ADDGOODS);
     },
+    delGoods: ({
+        commit
+    }) => {
+        commit(types.DELGOODS);
+    },
+    all: ({
+        commit
+    }) => {
+        commit(types.ALL);
+    },
+    render: ({
+        commit
+    }) => {
+        commit(types.RANDER);
+    },
+     save: ({
+        commit
+    },value) => {
+        commit(types.SAVE,value);
+    },
+    doSearch: ({
+        commit
+    },value) => {
+        commit(types.DOSEARCH,value);
+    },
     checkLogin: ({
         commit
     },value) => {
         commit(types.CHECKLOGIN,value);
-    }
+    },
 };
 

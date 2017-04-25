@@ -207,7 +207,7 @@
 	}
 </script>
 <style lang="css">
-	@import url("./App.css");
+	/*@import url("./App.css");*/
 	@import url("../css/login.css");
 	@import url("../css/strage.css");
 </style>
