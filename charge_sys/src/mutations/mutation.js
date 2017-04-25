@@ -2,19 +2,20 @@
    import $ from 'jquery'
    export default {
         [types.RANDER](state){
-        	console.log(123)
-           var url = 'http://localhost/dola-e-dream/charge_sys/serverTool/PHP/getMessage.php';  
+           var url = 'http://localhost/dola-e-dream/charge_sys/serverTool/PHP/tw.php';  
 	        $.ajax(url, {  
 	        	type:'GET', 
 		        async:false,
 		//      dataType:"jsonp",
 		//      jsonpCallback:'a',
-		        success:function(data) {  
-		        	 console.log(12)
+		        success:function(data) { 
 		             console.log(data)
 		             var data =JSON.parse(data)
 		             state.datas=data
 		        }
            })
-        }   
+        },
+        [types.ADDGOODS](state){
+            console.log(111)
+        }
    }

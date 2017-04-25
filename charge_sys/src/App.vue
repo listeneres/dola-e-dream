@@ -134,11 +134,11 @@
 								<!-- 按钮 -->
 								<td class="goods-content-top">
 									<div class="btn-group" role="group">
-										<button id="btnAdd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="新增" onclick="addGoods();" aria-label="Left Align">
+										<button id="btnAdd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="新增" @click="addGoods();" aria-label="Left Align">
 									<span class="" aria-hidden="true"></span> 新增
 								</button>
 
-										<button id="btnDeletd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="删除" onclick="deletedGoods();" aria-label="Left Align" disabled="disabled">
+										<button id="btnDeletd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="删除" @click="deletedGoods();" aria-label="Left Align" disabled="disabled">
 									<span class="" aria-hidden="true"></span> 删除
 								</button>
 									</div>
@@ -182,6 +182,8 @@
 </template>
 <script type="text/javascript">
 	import login from "./js/login.js"
+	import $ from 'jquery'
+    import {mapGetters, mapActions} from "vuex";
 	export default {
 		data: function() {
 			return {
@@ -193,6 +195,7 @@
 			}
 		},
 		methods: {
+			...mapActions(["delGoods","addGoods"]),
 			loginBtn: function() {
 				console.log(this.userName, this.psw, this.code)
 				this.isLogin = false;
@@ -205,6 +208,9 @@
 				login(obj)
 				this.isLogin = false;
 				this.hasLogin = true
+			},
+			addGoods(){
+				this.$store.dispatch("addGoods")
 			}
 		}
 	}

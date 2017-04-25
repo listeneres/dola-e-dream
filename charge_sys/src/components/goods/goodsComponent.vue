@@ -1,7 +1,5 @@
 <template>
 	<div id="listen">
-		<input type="button" value="addGoods" @click="addGoods"/>
-		<input type="button" value="delGoods" @click="delGoods"/>
         <tr>
         	<td><input type="checkbox" /></td>
         	<td  v-for="(value,key) in datas[0]">{{key}}</td>
@@ -24,14 +22,14 @@
     },
 //  computed: mapGetters(["findDetailData"]),
     methods:{	
-    	...mapActions(["delGoods","addGoods"]),
+
     	//增
-    	    addGoods(){
-    	    	this.$store.dispatch("addGoods")
-    	    },
-    	    delGoods(){
-    	    	this.$store.dispatch("delGoods")
-    	    }
+//  	    addGoods(){
+//  	    	this.$store.dispatch("addGoods")
+//  	    },
+//  	    delGoods(){
+//  	    	this.$store.dispatch("delGoods")
+//  	    }
     	//删
 //  	    delGoods(){}
     	//查
