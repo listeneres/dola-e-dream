@@ -3,6 +3,7 @@ import $ from 'jquery'
 import mutations from '../mutations/mutation.js';
 import dhmutations from '../mutations/dhmutations.js';
 import twmutations from '../mutations/twmutations.js';
+import zmmutations from '../mutations/login-mutations.js'
 // export default {
 // 	    [types.ADDGOODS](state){
 //          console.log(mutations)
@@ -10,5 +11,6 @@ import twmutations from '../mutations/twmutations.js';
 //     console.log(mutations)
       var object = $.extend(true, mutations,dhmutations);
       var object1 = $.extend(true, object,twmutations);
-   	   export default object1;   	   
+      var object2 = $.extend(true, object1,zmmutations);
+   	   export default object2;   	   
 //}    

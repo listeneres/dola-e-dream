@@ -13,4 +13,8 @@ export default {
 //      var datas = JSON.parse(datas)
         return state.Mdata
     },
+    checkLogin: function (state) {
+//  	console.log(value)
+        return state.loginData
+    }
 }

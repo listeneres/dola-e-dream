@@ -26,7 +26,7 @@
 							<div class="item validatepic clearfix">
 								<img id="Code" src="../images/12.png" width="75" height="30" style="display: inline; float: left;" />
 								<input id="pwdInput" name="dtoUserCode" tabindex="3" class="ipt ipt-y f_l" type="text" style="margin-right: 5px; display: inline;" v-model.trim="code" />
-								<a tabindex="4" class="changepic" id="forGetPassword" href="#" >换一张?</a>
+								<a tabindex="4" class="changepic" id="forGetPassword" href="#">换一张?</a>
 							</div>
 							<div class="item itemRadio clearfix">
 								<input type="checkbox" style="float: left;width:13px;height: 25px" id="radioPass" onclick="checkbox();">&nbsp;记住密码
@@ -42,14 +42,37 @@
 			</div>
 		</div>
 		<div class="app" v-if="hasLogin">
+			<div class="model">
+				<div class="shadow  clear">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" @click="closeWin">×</button>
+						<h3 class="modal-title"><span class="" aria-hidden="true"></span>新增/修改货品</h3>
+					</div>
+					<div class="mes clear">
+						<div class="input-group" v-for='(value,key,index) in Mdata[0]'>
+							<span class="input-group-addon addS" :id="'tbutton'+index">{{key}}</span>
+							<input :id="'tbDescription'+index" type="text" class="form-control" :value="''">
+							<span class="input-group-addon"><span class=""></span></span>
+						</div>
+					</div>
+					<div class="img">
+						<img src="../images/aa.jpg" alt="">
+					</div>
+					<div class="modal-footer">
+						<span id="indexGoods" style="color:red">请确认商品信息</span>
+						<button id="saveGoods" type="button" class="btn btn-primary"  @click="save()"><span class="" aria-hidden="true"></span>保存提交</button>
+
+					</div>
+				</div>
+			</div>
 			<div id="content-top">
 				<div>
 					<span class="guan">后台管理系统{{checkLogin}}</span>
 					<button type="button" class="btn btn-link text" style="color: #323f4c" aria-label="Left Align" id="btnNavigation">
 
-				<span class="" aria-hidden="true"></span>
-				隐藏导航栏
-			</button>
+						<span class="" aria-hidden="true"></span>
+						隐藏导航栏
+					</button>
 				</div>
 				<div class="container-fluid">
 					<div id="settings">
@@ -80,6 +103,7 @@
 								<span>存货列表</span>
 							</a>
 						</router-link>
+
 					</li>
 
 					<li>
@@ -117,7 +141,7 @@
 				<div class="widget-content">
 					<table>
 						<tbody>
-							<tr>
+							 <tr>
 								<td width="150px" id="storage" class="hidden">
 									<select class="text-input form-control" id="editStorage"></select>
 								</td>
@@ -130,59 +154,52 @@
 										<option value="42F934B3-6B57-4FF1-A2A4-66C7B8B8AD6A">不管库存 (0)</option>
 									</select>
 								</td>
+								<td width="60px">
+									<button type="button" class="btn btn-link btn-sm" data-toggle="tooltip" title="高级筛选" id="goodsFilter" aria-label="Left Align"><i class=""></i>&nbsp;开启筛选</button>
+								</td>
 								<!-- 按钮 -->
 								<td class="goods-content-top">
 									<div class="btn-group" role="group">
-										<button id="btnAdd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="新增" onclick="addGoods();" aria-label="Left Align">
-									<span class="" aria-hidden="true"></span> 新增
-								</button>
+										<button id="btnAdd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="新增" @click="addGoods();" aria-label="Left Align">
+											<span class="" aria-hidden="true"></span> 新增
+										</button>
 
-										<button id="btnDeletd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="删除" onclick="deletedGoods();" aria-label="Left Align" disabled="disabled">
-									<span class="" aria-hidden="true"></span> 删除
-								</button>
+										<button id="btnDeletd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="删除" @click="delGoods();" aria-label="Left Align" >
+											<span class="" aria-hidden="true"></span> 删除
+										</button>
+										<button id="btnDeletd" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="编辑" @click="changeGoods();" aria-label="Left Align" >
+											<span class="" aria-hidden="true"></span> 编辑你选中的那条数据
+										</button>
 									</div>
 								</td>
 
 								<td width="180px">
 									<div class="input-group input-group-sm">
-										<input id="searchText" type="text" class="form-control" placeholder="请输入搜索条件..." onkeypress="enterPress(event)" onkeydown="enterPress()" />
+										<input id="searchText" type="text" class="form-control" placeholder="请输入搜索条件..." @change='search()' />
 										<span class="input-group-btn">
-									<button class="btn btn-primary" type="button" onClick="doSearch();" id="btnSearch">
-										<span class=""></span>
-										</button>
+											<button class="btn btn-primary" type="button" @Click="doSearch();" id="btnSearch">
+												<span class="">。</span>
+											</button>
 										</span>
 									</div>
 								</td>
-								<td class="goods-content-top">
-									<div class="btn-group" role="group">
-										<button id="btnImport" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="导入" onclick="openImport();" aria-label="Left Align">
-									<span class="" aria-hidden="true"></span> 导入
-								</button>
-										<button id="btnExport" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="导出" onclick="openExport();" aria-label="Left Align">
-									<span class="" aria-hidden="true"></span> 导出
-								</button>
-									</div>
-								</td>
-
 								<td>
 									<div class="spaceW5"></div>
 								</td>
-								<td width="60px">
-									<button type="button" class="btn btn-link btn-sm" data-toggle="tooltip" title="高级筛选" id="goodsFilter" aria-label="Left Align"><i class=""></i>&nbsp;开启筛选</button>
-								</td>
-							</tr>
+							</tr> 
 						</tbody>
 					</table>
 				</div>
 				<router-view></router-view>
 			</div>
+
 		</div>
 	</div>
 </template>
 <script type="text/javascript">
-	import $ from 'jquery'
-  	import {mapGetters, mapActions} from "vuex";
 	import login from "./js/login.js"
+	import $ from 'jquery'
+	import {mapGetters, mapActions} from "vuex";
 	export default {
 		data: function() {
 			return {
@@ -193,21 +210,57 @@
 				code: ''
 			}
 		},
-		computed: mapGetters(["checkLogin"]),
 		methods: {
+			...mapActions(["delGoods","addGoods","save","loginBtn"]),
 			loginBtn: function() {
-				console.log(this.userName, this.psw, this.code)
+//				console.log(this.userName, this.psw, this.code)
 				this.isLogin = false;
-				this.hasLogin = true;
-				this.$store.dispatch("checkLogin",{userName: this.userName,psw: this.psw,code: this.code})
+				this.hasLogin = true
+				var obj = {
+					userName: this.userName,
+					psw: this.psw,
+					code: this.code
+				}
+				this.$store.dispatch("checkLogin",obj)
 			},
-			...mapActions(["checkLogin"]),		
+			addGoods(){
+				this.$store.dispatch("addGoods")
+				this.$store.dispatch("render")
+			},
+			delGoods:function(){
+				try {
+					this.$store.dispatch("delGoods" )
+				}catch(error) {
+					alert(error)
+				}
+			},
+			save(){
+				var arr=JSON.stringify(this.datas[0]).replace('{','').replace('}','').split(',')
+
+				this.$store.dispatch("save",arr)
+			},
+			closeWin(){
+				try {
+					$('.model').hide()
+				}catch(error) {
+					alert(error)
+				}
+			},
+
+			doSearch(){
+				try {
+					var serMessage =  $('#searchText').val()
+					this.$store.dispatch("doSearch",serMessage)
+				}catch(error) {
+					alert(error)
+				}	
+			}
 		},
-		
+		computed: mapGetters(['datas','Mdata',"checkLogin"])
 	}
 </script>
+
 <style lang="css">
-	/*@import url("./App.css");*/
 	@import url("../css/login.css");
 	@import url("../css/strage.css");
 </style>
